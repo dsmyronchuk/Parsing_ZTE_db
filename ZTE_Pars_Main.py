@@ -83,7 +83,7 @@ with ftp_client.open(path_folfer, "r", bufsize=32768) as f:
                     for i in archive.namelist():                # Прохожусь циклом по CSV файлам из Zip
                         df = pd.read_csv(io.BytesIO(archive.read(i)), encoding="ISO-8859-1")
                         dtypedict = mapping_df_types(df)
-                        Name_table = 'ZTE_' + nop + '_' + i
+                        Name_table = 'ZTE_' + nop + '_' + i.split('.')[0]
                         if len(df) > 1:
                             print(i)
                             df.to_sql(
